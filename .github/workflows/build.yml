@@ -1,0 +1,25 @@
+name: 'Build'
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the project
+      run: cmake -S . -B build
+    - name: Compile the executable
+      run: cd build && cmake --build .
