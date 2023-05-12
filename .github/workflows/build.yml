@@ -1,0 +1,24 @@
+name: 'Build'
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on:
+      - ubuntu-latest
+      - macos-13
+      - windows-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build
+      run: cmake -S . -B build
+    - name: Compile
+      run: cd ./build && make
