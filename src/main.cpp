@@ -1,4 +1,4 @@
-#include <CSGClient/main.hpp>
+#include "CSGClient/main.hpp"
 
 int main() {
     std::cout << "Hello, world!" << std::endl;
