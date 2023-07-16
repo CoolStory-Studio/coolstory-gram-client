@@ -13,13 +13,10 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Build the project
-      run: cmake -S . -B build
-    - name: Compile the executable
-      run: cd build && cmake --build .
+    - name: Build the Docker image
+      run: docker build -t coolstory-gram-client .
+    - name: Run the application with Docker
+      run: docker run coolstory-gram-client
