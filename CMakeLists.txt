@@ -6,7 +6,11 @@ set(CMAKE_CXX_STANDARD 17)
 
 find_package(Boost 1.74 REQUIRED)
 
-FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz)
+FetchContent_Declare(
+	json
+	GIT_REPOSITORY https://github.com/nlohmann/json.git
+	GIT_TAG bc889afb4c5bf1c0d8ee29ef35eaaf4c8bef8a5d # release/3.11.2
+)
 FetchContent_MakeAvailable(json)
 
 include_directories(include)
