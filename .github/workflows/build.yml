@@ -6,7 +6,6 @@ on:
     types:
       - opened
       - reopened
-      - edited
       - ready_for_review
     branches:
       - main
