@@ -14,14 +14,12 @@ FetchContent_Declare(
 FetchContent_Declare(
 	logger
 	GIT_REPOSITORY https://github.com/temikfart/logger.git
-	GIT_TAG e1e6d1122815b3b6b173e361bac0f3be5d4d2a6c
+	GIT_TAG 5954a903b1b8227cac89ddc04ead81225ed90821 # release/1.0.0
 )
-FetchContent_MakeAvailable(json)
-FetchContent_MakeAvailable(logger)
+FetchContent_MakeAvailable(json logger)
 
 include_directories(include)
 
 add_executable(coolstory_gram_client
             src/main.cpp)
-target_link_libraries(coolstory_gram_client PRIVATE nlohmann_json::nlohmann_json)
-target_link_libraries(coolstory_gram_client PRIVATE liblogger)
+target_link_libraries(coolstory_gram_client PRIVATE nlohmann_json::nlohmann_json liblogger)
