@@ -22,4 +22,4 @@ include_directories(include)
 
 add_executable(coolstory_gram_client
             src/main.cpp)
-target_link_libraries(coolstory_gram_client PRIVATE nlohmann_json::nlohmann_json liblogger)
+target_link_libraries(coolstory_gram_client PRIVATE nlohmann_json::nlohmann_json liblogger boost_coroutine)
