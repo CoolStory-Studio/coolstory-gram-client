@@ -10,7 +10,7 @@ int main(int argc, char** argv)
                   "Usage: coolstory_gram_client <host> <port> <text>\n" <<
                   "Example:\n" <<
                   "    coolstory_gram_client echo.websocket.org 80 \"Hello, world!\"\n";
-        return EXIT_FAILURE;
+        return EXIT_SUCCESS;
     }
     auto const host = argv[1];
     auto const port = argv[2];
