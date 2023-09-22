@@ -20,7 +20,7 @@ void do_session(std::string host,
 
     // Look up the domain name
     auto const results = resolver.async_resolve(host, port, yield[ec]);
-    if(ec)
+    if (ec)
         return fail(ec, "resolve");
 
     // Set a timeout on the operation
@@ -28,7 +28,7 @@ void do_session(std::string host,
 
     // Make the connection on the IP address we get from a lookup
     auto ep = beast::get_lowest_layer(ws).async_connect(results, yield[ec]);
-    if(ec)
+    if (ec)
         return fail(ec, "connect");
 
     // Update the host_ string. This will provide the value of the
@@ -56,12 +56,12 @@ void do_session(std::string host,
 
     // Perform the websocket handshake
     ws.async_handshake(host, "/", yield[ec]);
-    if(ec)
+    if (ec)
         return fail(ec, "handshake");
 
     // Send the message
     ws.async_write(net::buffer(std::string(text)), yield[ec]);
-    if(ec)
+    if (ec)
         return fail(ec, "write");
 
     // This buffer will hold the incoming message
@@ -69,12 +69,12 @@ void do_session(std::string host,
 
     // Read a message into our buffer
     ws.async_read(buffer, yield[ec]);
-    if(ec)
+    if (ec)
         return fail(ec, "read");
 
     // Close the WebSocket connection
     ws.async_close(websocket::close_code::normal, yield[ec]);
-    if(ec)
+    if (ec)
         return fail(ec, "close");
 
     // If we get here then the connection is closed gracefully

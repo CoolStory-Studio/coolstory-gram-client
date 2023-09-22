@@ -4,7 +4,7 @@ include(FetchContent)
 
 set(CMAKE_CXX_STANDARD 17)
 
-find_package(Boost 1.74 REQUIRED)
+find_package(Boost 1.74 REQUIRED coroutine)
 
 FetchContent_Declare(
 	json
@@ -18,9 +18,10 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(json logger)
 
+include_directories(${BOOST_INCLUDE_DIRS})
 include_directories(include)
 
 add_executable(coolstory_gram_client
             src/main.cpp
 			src/websocket_session.cpp)
-target_link_libraries(coolstory_gram_client PRIVATE nlohmann_json::nlohmann_json liblogger boost_coroutine)
+target_link_libraries(coolstory_gram_client PRIVATE nlohmann_json::nlohmann_json liblogger Boost::coroutine)
